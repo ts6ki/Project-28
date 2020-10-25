@@ -29,7 +29,7 @@ function setup() {
 	//Create the Bodies Here.
 	ground = new Ground(750, 750, 1600, 25);
 	tree = new Tree(1200,600,50,250)
-	stone = new Stone(170,645);
+	stone = new Stone(170,645,50);
 	var pointB ={
         x: 170,
         y: 645
@@ -68,22 +68,7 @@ function draw() {
   detectCollision(stone,mango5);
   
   drawSprites();
- 
 
-
-  function detectCollision(lstone, lmango)
-{
-var mangoPos = lmango.body.position;
-var stonePos = lstone.body.position;
-
-  var distance = dist(stonePos.x, stonePos.y, mangoPos.x, mangoPos.y);
-
-	if(distance <= lmango.r + lstone.r)
-	{
-    console.log("this is working");
-		Matter.Body.setStatic(lmango.body,false)
-	}
-}
 
 }
 
@@ -98,3 +83,27 @@ function mouseReleased()
     sling.fly();
 }
 
+function detectCollision(lstone, lmango)
+{
+var mangoPos = lmango.body.position;
+var stonePos = lstone.body.position;
+
+  var distance = dist(stonePos.x, stonePos.y, mangoPos.x, mangoPos.y);
+
+	if(distance <= lmango.r + lstone.r)
+	{
+    console.log("this is working");
+		Matter.Body.setStatic(lmango.body,false)
+	}
+}
+
+function keyPressed()
+{
+  console.log("i am called")
+  if(keyCode === 32)
+  {
+    console.log("space is presssed")
+    //Matter.body.setPosition(stone.body, {x:170, y:645})
+    sling.attach(stone.body);
+  }
+}
