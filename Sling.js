@@ -12,6 +12,12 @@ class Sling{
         World.add(world, this.sling);
     }
 
+    attach(body)
+    {
+        console.log("hey i am here")
+        this.sling.bodyA = body;
+    }
+
     fly() 
     {
         this.sling.bodyA = null

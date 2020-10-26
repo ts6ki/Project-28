@@ -89,10 +89,11 @@ var mangoPos = lmango.body.position;
 var stonePos = lstone.body.position;
 
   var distance = dist(stonePos.x, stonePos.y, mangoPos.x, mangoPos.y);
-
-	if(distance <= lmango.r + lstone.r)
+  //console.log(distance);
+  //console.log(lmango.radius + lstone.radius);
+	if(distance <= lmango.radius + lstone.radius)
 	{
-    console.log("this is working");
+    //console.log("this is working");
 		Matter.Body.setStatic(lmango.body,false)
 	}
 }
@@ -103,7 +104,7 @@ function keyPressed()
   if(keyCode === 32)
   {
     console.log("space is presssed")
-    //Matter.body.setPosition(stone.body, {x:170, y:645})
+    Matter.Body.setPosition(stone.body, {x:170, y:645})
     sling.attach(stone.body);
   }
 }
